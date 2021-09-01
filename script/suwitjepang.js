@@ -25,8 +25,8 @@ function main(){
     highScoreWrap.style.display = "flex";
 swal.fire({
     allowOutsideClick:false,
-    imageUrl:"images/head.png",
-    title:"Selamat Datang Di Game Suwit Jepang",
+    imageUrl:"images/head.svg",
+    title:"Selamat Datang Di Game Suwit Jawa",
     showCancelButton:true,
     cancelButtonText:'<i class="fas fa-times"></i> Keluar',
     reverseButtons:true,
@@ -81,9 +81,9 @@ function start(){
         },
         input:"radio",
   inputOptions:{
-      'Gunting': "Gunting",
-      'Batu': "Batu",
-      'Kertas':"Kertas"
+      'Manusia': "Manusia",
+      'Gajah': "Gajah",
+      'Semut':"Semut"
   },
   inputValidator: (value) => {
       player = value;
@@ -96,13 +96,13 @@ function start(){
             // Every time the player clicks the OK button the computer will choose his choice randomly
             let comp = Math.round(Math.random()*6)+1;
             if(comp < 3){
-                comp = 'Gunting';
+                comp = 'Manusia';
             }
             else if(comp < 5 && comp > 2){
-                comp = 'Batu';
+                comp = 'Gajah';
             }
             else {
-                comp = 'Kertas';
+                comp = 'Semut';
             }
             flow(player,comp)
             condition(player,comp,end,ex)
@@ -115,14 +115,14 @@ function flow(player,comp){
     if(player == comp){
         end = 'SERI !'
     }
-    else if(player == 'Gunting'){
-       end = (comp == 'Batu') ? 'KALAH !' : 'MENANG !';
+    else if(player == 'Manusia'){
+       end = (comp == 'Gajah') ? 'KALAH !' : 'MENANG !';
     }
-    else if(player == 'Batu'){
-        end = (comp == 'Gunting') ? 'MENANG !' : 'KALAH !';
+    else if(player == 'Gajah'){
+        end = (comp == 'Manusia') ? 'MENANG !' : 'KALAH !';
     }
-    else if(player == 'Kertas'){
-        end = (comp == 'Batu') ? 'MENANG !' : 'KALAH !';
+    else if(player == 'Semut'){
+        end = (comp == 'Gajah') ? 'MENANG !' : 'KALAH !';
     }
 }
 
@@ -195,7 +195,7 @@ function overlay(player,comp,end,ex){
             showCancelButton:true,
             cancelButtonText:'<i class="fas fa-times"></i> Keluar',
             text:"Anda memilih " + player + " Komputer memilih " + comp ,
-            confirmButtonText:'<i class="fas fa-redo-alt"></i> Ulang',
+            confirmButtonText:'Lanjut',
             customClass:{
                 title:"title",
                 container:"text",
